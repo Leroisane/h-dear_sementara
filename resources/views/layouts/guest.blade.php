@@ -12,7 +12,12 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @if(file_exists(public_path('build/manifest.json')))
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @else
+            <!-- Fallback CSS untuk production tanpa Vite -->
+            <link href="{{ asset('build/assets/app-0gogvkx0.css') }}" rel="stylesheet">
+        @endif
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
@@ -26,5 +31,11 @@
                 {{ $slot }}
             </div>
         </div>
+        
+        @if(file_exists(public_path('build/manifest.json')))
+            @vite('resources/js/app.js')
+        @else
+            <script src="{{ asset('build/assets/app-B9-8K0p7.js') }}"></script>
+        @endif
     </body>
 </html>

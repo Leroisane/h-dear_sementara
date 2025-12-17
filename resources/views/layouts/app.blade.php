@@ -18,10 +18,16 @@
             <div class="flex justify-between h-16">
                 
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('undangan.index') }}" class="flex items-center gap-2">
-                        <img src="{{ asset('images/H-Dear_logo.webp') }}" alt="Logo Aplikasi" class="h-10 w-auto">
-                    </a>
-                </div>
+    <a href="{{ route('undangan.index') }}" class="flex items-center gap-2">
+        @if(file_exists(public_path('images/H-Dear_logo.webp')))
+            <img src="{{ asset('images/H-Dear_logo.webp') }}" alt="Logo Aplikasi" class="h-10 w-auto">
+        @else
+            <div class="h-10 w-auto px-4 py-2 bg-indigo-600 text-white font-bold rounded">
+                H-Dear
+            </div>
+        @endif
+    </a>
+</div>
 
                 <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-center sm:space-x-8">
                     @auth
