@@ -10,6 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style> body { font-family: 'Inter', sans-serif; } </style>
     @stack('styles')
+
+    <!-- ... -->
+    
+    <!-- Tailwind CDN sebagai fallback -->
+    @if(!file_exists(public_path('build/manifest.json')))
+        <script src="https://cdn.tailwindcss.com"></script>
+    @else
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
+
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
 

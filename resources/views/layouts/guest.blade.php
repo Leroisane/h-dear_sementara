@@ -18,6 +18,15 @@
             <!-- Fallback CSS untuk production tanpa Vite -->
             <link href="{{ asset('build/assets/app-0gogvkx0.css') }}" rel="stylesheet">
         @endif
+    <!-- ... -->
+    
+    <!-- Tailwind CDN sebagai fallback -->
+    @if(!file_exists(public_path('build/manifest.json')))
+        <script src="https://cdn.tailwindcss.com"></script>
+    @else
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
+
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
